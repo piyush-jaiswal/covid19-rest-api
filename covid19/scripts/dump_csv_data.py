@@ -1,11 +1,13 @@
 import csv
 import datetime
+from pathlib import Path
 
 from covid19.models import Covid19India, CovidVaccineStatewise, StateWiseTestingDetails
 
 
 def dump_covid_19_india():
-    with open('C:\mystuff\homelane\Covid1929cc1f3\covid_19_india.csv', newline='') as csvfile:
+    path = Path(__file__).parent / "../data/covid_19_india.csv"
+    with path.open() as csvfile:
         reader = csv.reader(csvfile)
         next(reader, None)
         for row in reader:
@@ -43,7 +45,8 @@ def dump_covid_19_india():
 
 
 def dump_covid_vaccine_statewise():
-    with open("C:\mystuff\homelane\Covid1929cc1f3\covid_vaccine_statewise.csv", newline='') as csvfile:
+    path = Path(__file__).parent / "../data/covid_vaccine_statewise.csv"
+    with path.open() as csvfile:
         reader = csv.reader(csvfile)
         next(reader, None)
 
@@ -155,7 +158,8 @@ def dump_covid_vaccine_statewise():
 
 
 def dump_statewise_testing_details():
-    with open("C:\mystuff\homelane\Covid1929cc1f3\StatewiseTestingDetails.csv", newline='') as csvfile:
+    path = Path(__file__).parent / "../data/StatewiseTestingDetails.csv"
+    with path.open() as csvfile:
         reader = csv.reader(csvfile)
         next(reader, None)
 
