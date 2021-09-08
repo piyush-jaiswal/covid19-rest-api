@@ -1,3 +1,5 @@
+import socket
+
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
@@ -13,8 +15,20 @@ def index(request):
     return Response("Hello, world. You're at the covid19 index.")
 
 
+def _get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+
 @api_view(['GET'])
 def get_date_info(request):
+    if _get_client_ip(request) != socket.gethostbyname('whispering-lake-44932.herokuapp.com'):
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
+
     request_validation = validate_get_date_info(request)
     if not request_validation["success"]:
         return Response(status=status.HTTP_400_BAD_REQUEST, data={
