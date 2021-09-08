@@ -27,7 +27,11 @@ def _get_client_ips(request):
 
 @api_view(['GET'])
 def get_date_info(request):
-    if socket.gethostbyname('whispering-lake-44932.herokuapp.com') not in _get_client_ips(request):
+    ips = _get_client_ips(request)
+    host_ip = socket.gethostbyname('whispering-lake-44932.herokuapp.com')
+    print(ips)
+    print(host_ip)
+    if host_ip not in ips:
         return Response({}, status=status.HTTP_401_UNAUTHORIZED)
 
     request_validation = validate_get_date_info(request)
