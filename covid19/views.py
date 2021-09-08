@@ -19,7 +19,7 @@ def _get_client_ips(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     ips = []
     if x_forwarded_for:
-        ips = x_forwarded_for
+        ips = x_forwarded_for.split(',')
 
     ips.append(request.META.get('REMOTE_ADDR'))
     return ips
