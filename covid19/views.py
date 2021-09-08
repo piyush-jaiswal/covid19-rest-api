@@ -15,25 +15,8 @@ def index(request):
     return Response("Hello, world. You're at the covid19 index.")
 
 
-def _get_client_ips(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    ips = []
-    if x_forwarded_for:
-        ips = x_forwarded_for.split(',')
-
-    ips.append(request.META.get('REMOTE_ADDR'))
-    return ips
-
-
 @api_view(['GET'])
 def get_date_info(request):
-    ips = _get_client_ips(request)
-    host_ip = socket.gethostbyname('whispering-lake-44932.herokuapp.com')
-    print(ips)
-    print(host_ip)
-    if host_ip not in ips:
-        return Response({}, status=status.HTTP_401_UNAUTHORIZED)
-
     request_validation = validate_get_date_info(request)
     if not request_validation["success"]:
         return Response(status=status.HTTP_400_BAD_REQUEST, data={
