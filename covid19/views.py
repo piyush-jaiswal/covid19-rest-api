@@ -1,8 +1,5 @@
-import socket
-
 from rest_framework import status
 from rest_framework.decorators import api_view
-from rest_framework.request import Request
 from rest_framework.response import Response
 
 from covid19.models import Covid19India, CovidVaccineStatewise, StateWiseTestingDetails
@@ -11,7 +8,8 @@ from covid19.serializers import Covid19IndiaSerializer, CovidVaccineStatewiseSer
 from covid19.validators import validate_get_date_info, validate_get_state_info, validate_pinpoint_state
 
 
-def index(request):
+@api_view(['GET'])
+def index():
     return Response("Hello, world. You're at the covid19 index.")
 
 

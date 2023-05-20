@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 import django_heroku
 
@@ -80,22 +80,18 @@ WSGI_APPLICATION = 'data_service.wsgi.application'
 
 DATABASES = {
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'homelane',
-    #     'USER': 'root',
-    #     'PASSWORD': '1234',
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': '',
+    #     'USER': '',
+    #     'PASSWORD': '',
     #     'HOST': '127.0.0.1',
-    #     'PORT': '3306'
+    #     'PORT': '5432'
     # }
 
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'homelane',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
-    }
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+   }
 }
 
 
