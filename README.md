@@ -15,12 +15,20 @@ pip install -r requirements.txt
 Create DB tables and populate data.
 ```
 python manage.py migrate
-python manage.py runscript dump_csv_data.py
+python manage.py runscript dump_csv_data
 ```
 Currently, the DB is `sqlite`. To work with something else, specify details in the `DATABASES` variable in `data_service/settings.py`
 
 
 ### Usage
+
+Copy `.env.example` and rename to `.env`. Set the environment variables.
+
+To generate sample keys for the `DJANGO_SECRET_KEY` environment variable, in a python shell run:
+```python
+from django.core.management.utils import get_random_secret_key
+get_random_secret_key()  # 'p#+mx&9ef4d1*#1u_aofw2-!zv06czc#t%2h@d6+2=-eze#u*^'
+```
 
 Start the server:
 
