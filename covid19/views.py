@@ -10,7 +10,7 @@ from covid19.validators import validate_get_date_info, validate_get_state_info, 
 
 @api_view(['GET'])
 def index(request):
-    return Response("Hello, world. You're at the covid19 index.")
+    return Response("Hello, you're at the covid19 index.")
 
 
 @api_view(['GET'])
