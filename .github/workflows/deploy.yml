@@ -1,0 +1,20 @@
+name: Deploy to PythonAnywhere
+
+on:
+    push:
+        branches:
+            - master
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Re-Deploy Pythonanywhere Django API
+              uses: umuttopalak/pythonanywhere-deploy-action@v1.1.2
+              with:
+                host: 'www.pythonanywhere.com'
+                username: ${{ secrets.PYTHON_ANYWHERE_USERNAME }}
+                api_token: ${{ secrets.PYTHON_ANYWHERE_API_TOKEN }}
+                domain_name: ${{ secrets.PYTHON_ANYWHERE_DOMAIN_NAME }}
