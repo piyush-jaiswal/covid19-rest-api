@@ -22,7 +22,7 @@ def get_date_info(request):
             "errors": request_validation["errors"]
         })
 
-    date = request.data["date"]
+    date = request.query_params["date"]
 
     q1 = Covid19India.objects.filter(date=date)
     q1_serializer = Covid19IndiaSerializer(q1, many=True)
@@ -51,7 +51,7 @@ def get_state_info(request):
             "errors": request_validation["errors"]
         })
 
-    state = request.data["state"]
+    state = request.query_params["state"]
 
     q1 = Covid19India.objects.filter(state_union_territory=state).order_by('date')
     q1_serializer = Covid19IndiaSerializer(q1, many=True)
@@ -80,8 +80,8 @@ def pinpoint_state(request):
             "errors": request_validation["errors"]
         })
 
-    state = request.data["state"]
-    date = request.data["date"]
+    state = request.query_params["state"]
+    date = request.query_params["date"]
 
     q1 = Covid19India.objects.filter(state_union_territory=state, date=date)
     q1_serializer = Covid19IndiaSerializer(q1, many=True)

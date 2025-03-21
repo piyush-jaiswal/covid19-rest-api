@@ -2,10 +2,10 @@ from covid19 import serializers
 
 
 def _get_validation_result(request, serializer):
-    validation = serializer(data=request.data)
+    validation = serializer(data=request.query_params)
     return {
         "success": validation.is_valid(),
-        "details": None if validation.is_valid() else "Bad Request Body",
+        "details": None if validation.is_valid() else "Invalid Query Parameters",
         "errors": validation.errors
     }
 

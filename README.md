@@ -38,32 +38,17 @@ Start the server:
 
 ### Endpoints
 
-- [GET] `/covid19/get-date-info` - Fetches details for all States and Union Territories on a particular date
-```
-JSON:
-{
-  "date": "YYYY-MM-DD"
-}
-```
+- [GET] `/covid19/get-date-info?date=<YYYY-MM-DD>` - Fetches details for all States and Union Territories on a particular date. Ex: `date=2020-10-01`
+
 <br/>
 
-- [GET] `/covid19/get-state-info` - Fetches details of a State or Union Territory for all dates present in the database
-```
-JSON:
-{
-  "state": "<any state or UT in India>"
-}
-```
+- [GET] `/covid19/get-state-info?state=<State/UT in India>` - Fetches details of a State or Union Territory for all dates present in the database. Ex: `state=Andhra Pradesh`
+
+
 <br/>
 
-- [GET] `/covid19/pinpoint-state` - Fetches details of a State or Union Territory on a particular date
-```
-JSON:
-{
-  "date": "YYYY-MM-DD",
-  "state": "<any state or UT in India>"
-}
-```
+- [GET] `/covid19/pinpoint-state?date=<YYYY-MM-DD>&state=<State/UT in India>` - Fetches details of a State or Union Territory on a particular date
+
 
 ### Data
 Present in `covid19/data:`
