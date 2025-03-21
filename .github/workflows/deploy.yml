@@ -13,6 +13,5 @@ jobs:
         steps:
             - name: Reload PythonAnywhere Web App
               run: |
-                    curl --header 'Authorization: Token ${{ secrets.PYTHON_ANYWHERE_API_TOKEN }}' \
-                    --request POST \
-                    https://www.pythonanywhere.com/api/v0/user/${{ secrets.PYTHON_ANYWHERE_USERNAME }}/webapps/${{ secrets.PYTHON_ANYWHERE_DOMAIN_NAME }}/reload/
+                  curl --header 'Authorization: Token ${{ secrets.PYTHON_ANYWHERE_API_TOKEN }}' --request POST \
+                  https://www.pythonanywhere.com/api/v0/user/${{ secrets.PYTHON_ANYWHERE_USERNAME }}/webapps/${{ secrets.PYTHON_ANYWHERE_DOMAIN_NAME }}/reload/
