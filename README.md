@@ -3,7 +3,7 @@ RESTful HTTP API using `Django` and `Django REST framework` to fetch details of 
 
 Requests sent to the server are validated, including the data types in which the request data is expected with support for custom types such as dates, sending the appropriate response in case validation fails. The details are then fetched from DB using `Django's ORM`, serialized and returned in a `JSON` response.
 
-Deployed on PythonAnywhere: [piyushj.pythonanywhere.com](piyushj.pythonanywhere.com)
+Deployed on PythonAnywhere: [piyushj.pythonanywhere.com](https://piyushj.pythonanywhere.com)
 
 ### Requirements
 This project is written in `python3.7`
