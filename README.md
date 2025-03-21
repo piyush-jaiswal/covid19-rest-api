@@ -1,8 +1,9 @@
 # covid19-rest-api
 RESTful HTTP API using `Django` and `Django REST framework` to fetch details of the Covid19 cases registered and the vaccinations administered in India.
 
-Requests sent to the server are validated, including the data types in which the request data is expected with support for custom types such as dates, sending the appropriate response 
-in case validation fails. The details are then fetched from DB using `Django's ORM`, serialized and returned in a `JSON` response.
+Requests sent to the server are validated, including the data types in which the request data is expected with support for custom types such as dates, sending the appropriate response in case validation fails. The details are then fetched from DB using `Django's ORM`, serialized and returned in a `JSON` response.
+
+Deployed on PythonAnywhere: [piyushj.pythonanywhere.com](piyushj.pythonanywhere.com)
 
 ### Requirements
 This project is written in `python3.7`
@@ -12,15 +13,6 @@ pip install -r requirements.txt
 
 
 ### Setup
-Create DB tables and populate data.
-```
-python manage.py migrate
-python manage.py runscript dump_csv_data
-```
-Currently, the DB is `sqlite`. To work with something else, specify details in the `DATABASES` variable in `data_service/settings.py`
-
-
-### Usage
 
 Copy `.env.example` and rename to `.env`. Set the environment variables.
 
@@ -30,6 +22,15 @@ from django.core.management.utils import get_random_secret_key
 get_random_secret_key()  # 'p#+mx&9ef4d1*#1u_aofw2-!zv06czc#t%2h@d6+2=-eze#u*^'
 ```
 
+Create DB tables and populate data.
+```bash
+python manage.py migrate
+python manage.py runscript dump_csv_data
+```
+Currently, the DB is `sqlite`. To work with something else, specify details in the `DATABASES` variable in `data_service/settings.py`
+
+
+### Usage
 Start the server:
 
 `python manage.py runserver` (Starts the server on 127.0.0.1:8000)
@@ -51,7 +52,17 @@ Start the server:
 
 
 ### Data
-Present in `covid19/data:`
+
+State names are capitalized and space separated:
+- Andhra Pradesh
+- Maharashtra
+- West Bengal
+- Jammu and Kashmir
+- Andaman and Nicobar Islands
+
+<br>
+
+Data present in `covid19/data`:
 
 `covid_19_india.csv`
 - Sno
